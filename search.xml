@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>解决在Vue中引入Cesium后打包完项目无法打开的问题</title>
+      <link href="/posts/8fb63ca9/"/>
+      <url>/posts/8fb63ca9/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我曾在 <a href="https://mp.weixin.qq.com/s?__biz=Mzg5MzczODEyNw==&mid=2247489488&idx=1&sn=c2f2f79e31f3ad44960ba3732a98be79&chksm=c02b1a30f75c932639140d092295fa9a5727cc0bf422aaeccb0c73c541661d95151f25ffe6a4&scene=178&cur_album_id=2353331350579003393#rd">在 Vue 3 中引入 CesiumJS</a> 一文中介绍了如何通过 npm 的方式安装并引入 Cesium，并没有进行打包测试。接下来会针对上次配置好的项目在进行打包时碰到的问题进行进一步研究。</p><h2 id="打包并运行测试"><a href="#打包并运行测试" class="headerlink" title="打包并运行测试"></a>打包并运行测试</h2><p>我们打开上次配置好的代码，运行如下命令打包一下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或</span></span><br><span class="line">yarn build</span><br></pre></td></tr></table></figure><p>如下图所示，打包好的文件位于<code>dist</code>目录下。</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/202302161554378.png?imageMogr2/quality/75/format/webp/interlace/0"></p><p>接下来我们借助<code>Live Server</code>这款插件运行打包后的项目，没有安装的可以在 VS Code 的<strong>扩展商店</strong>安装一下。</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/202302161557242.png?imageMogr2/quality/75/format/webp/interlace/0"></p><p>在<code>index.html</code>上右键运行即可。</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/202302161559666.png?imageMogr2/quality/75/format/webp/interlace/0"></p><p>运行之后发现并不能正常运行，如下图所示：</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/202302161602238.png?imageMogr2/quality/75/format/webp/interlace/0"></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>打开<code>vue.config.js</code>文件，按下图所示修改配置：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">publicPath</span>: <span class="string">&#x27;.&#x27;</span></span><br><span class="line"><span class="attr">CESIUM_BASE_URL</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="string">&#x27;./&#x27;</span>)</span><br></pre></td></tr></table></figure><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/202302162141345.png?imageMogr2/quality/75/format/webp/interlace/0"></p><p>重新打包，再次用 Live Server 打开，成功打开。</p><blockquote><p><strong>注</strong>：下图中控制台给出的黄色警告信息，这个目前没有找到解决方法，后续得看官方如何优化了。</p></blockquote><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/202302162144336.png?imageMogr2/quality/75/format/webp/interlace/0"></p><hr><p>另外，我们认真翻看 VS Code 命令行的打包日志，还能发现警告信息，具体如下图所示：提示打包出来的<strong>文件超过了推荐的大小上限 244 KiB</strong>。</p><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/202302162150756.png?imageMogr2/quality/75/format/webp/interlace/0"></p><p>其实上述问题可以忽略，只能说 Cesium 官方针对 npm 方式引入方式优化的不够好了。后来，我又咨询了一个大佬，这个可能影响项目线上发布后首次加载的速度，尤其是想服务器带宽小的，就比较明显。</p><p>针对这种情况，我尝试了 <a href="http://mp.weixin.qq.com/s?__biz=Mzg5MzczODEyNw==&mid=2247485823&idx=1&sn=080d27b4cf0ecb71e53dde39dbae89d2&chksm=c02b049ff75c8d897cfc0d6b66d63788dcba7eafd9f549e568442d1dd70aecb87b70301c5117&scene=21#wechat_redirect">Cesium本地环境配置</a> 一文中介绍的配置方法，但在打包后仍然会出现上述警告。代码详见：<a class="btn-beautify outline red larger" href="https://www.aliyundrive.com/s/xM9G3zzWxbo"   title="下载源代码"><i class="far fa-hand-point-right"></i><span>下载源代码</span></a> ，项目名称为：<code>vue3-cesium-local</code>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Cesium </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+            <tag> Cesium </tag>
+            
+            <tag> 打包 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在 Vue 3 中引入 CesiumJS</title>
       <link href="/posts/d152bc0/"/>
       <url>/posts/d152bc0/</url>
