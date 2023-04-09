@@ -4823,7 +4823,7 @@ span.mathjax-overflow {
   border: 1px solid #dee2e6;
   position: relative;
   overflow: hidden;
-  margin: 0 8px;
+  margin: 0 3px;
   overflow-y: auto;
   color: #212529;
 }
