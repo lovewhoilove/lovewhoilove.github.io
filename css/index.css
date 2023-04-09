@@ -4815,6 +4815,43 @@ span.mathjax-overflow {
 #article-container .btn-beautify.outline:hover {
   color: #fff !important;
 }
+.card_box {
+  display: inline-block;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  position: relative;
+  overflow: hidden;
+  margin: 0 8px;
+  overflow-y: auto;
+  color: #212529;
+}
+.card_box .card_content {
+  padding: 10px;
+  z-index: 1;
+}
+.card_box .card_content .title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #49b1f5;
+}
+.card_box .card_content .title_trans {
+  display: block;
+  font-size: 14px;
+}
+.card_box .card_content .file {
+  display: block;
+  font-size: 12px;
+}
+.card_box .card_content .content {
+  display: block;
+  font-size: 12px;
+}
+[data-theme='dark'] .card_box {
+  color: #fff !important;
+  background: #333 !important;
+}
 #article-container figure.gallery-group {
   position: relative;
   float: left;
