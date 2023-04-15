@@ -650,9 +650,9 @@
             
             <tag> interaction </tag>
             
-            <tag> custom </tag>
-            
             <tag> editing </tag>
+            
+            <tag> custom </tag>
             
         </tags>
       
@@ -683,9 +683,9 @@
             
             <tag> circle </tag>
             
-            <tag> render </tag>
-            
             <tag> custom </tag>
+            
+            <tag> render </tag>
             
             <tag> hitDetectionRenderer </tag>
             
@@ -801,9 +801,9 @@
             
             <tag> circle </tag>
             
-            <tag> render </tag>
-            
             <tag> custom </tag>
+            
+            <tag> render </tag>
             
         </tags>
       
@@ -859,9 +859,9 @@
       
         <tags>
             
-            <tag> vector </tag>
-            
             <tag> animation </tag>
+            
+            <tag> vector </tag>
             
             <tag> feature </tag>
             
@@ -1064,9 +1064,9 @@
       
         <tags>
             
-            <tag> openstreetmap </tag>
-            
             <tag> simple </tag>
+            
+            <tag> openstreetmap </tag>
             
             <tag> attribution </tag>
             
@@ -1093,9 +1093,9 @@
       
         <tags>
             
-            <tag> layers </tag>
-            
             <tag> openstreetmap </tag>
+            
+            <tag> layers </tag>
             
             <tag> canvas </tag>
             
@@ -1275,9 +1275,9 @@
       
         <tags>
             
-            <tag> vector </tag>
-            
             <tag> animation </tag>
+            
+            <tag> vector </tag>
             
             <tag> style </tag>
             

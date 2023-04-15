@@ -248,3 +248,9 @@ body,
 [data-theme="light"] #universe {
   display: none;
 }
+
+/* 自定义加载动画 */
+.loading-img {
+  background: url(../img/avatar.png) no-repeat center center;
+  background-size: cover;
+}
