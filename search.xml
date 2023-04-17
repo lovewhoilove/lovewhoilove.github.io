@@ -157,11 +157,11 @@
       
         <tags>
             
+            <tag> style </tag>
+            
             <tag> cog </tag>
             
             <tag> webgl </tag>
-            
-            <tag> style </tag>
             
             <tag> reprojection </tag>
             
@@ -277,9 +277,9 @@
       
         <tags>
             
-            <tag> openstreetmap </tag>
-            
             <tag> vector </tag>
+            
+            <tag> openstreetmap </tag>
             
             <tag> geojson </tag>
             
@@ -389,13 +389,13 @@
             
             <tag> full-screen </tag>
             
-            <tag> xyz </tag>
-            
             <tag> drag </tag>
             
             <tag> rotate </tag>
             
             <tag> zoom </tag>
+            
+            <tag> xyz </tag>
             
         </tags>
       
@@ -573,9 +573,9 @@
       
         <tags>
             
-            <tag> webgl </tag>
-            
             <tag> icon </tag>
+            
+            <tag> webgl </tag>
             
             <tag> sprite </tag>
             
@@ -761,11 +761,11 @@
       
         <tags>
             
-            <tag> canvas </tag>
-            
             <tag> vector </tag>
             
             <tag> style </tag>
+            
+            <tag> canvas </tag>
             
             <tag> kml </tag>
             
@@ -827,9 +827,9 @@
             
             <tag> vector </tag>
             
-            <tag> webgl </tag>
-            
             <tag> style </tag>
+            
+            <tag> webgl </tag>
             
             <tag> heatmap </tag>
             
@@ -1809,11 +1809,11 @@
       
         <tags>
             
+            <tag> style </tag>
+            
             <tag> cog </tag>
             
             <tag> webgl </tag>
-            
-            <tag> style </tag>
             
         </tags>
       
@@ -1954,11 +1954,11 @@
       
         <tags>
             
+            <tag> style </tag>
+            
             <tag> cog </tag>
             
             <tag> webgl </tag>
-            
-            <tag> style </tag>
             
         </tags>
       
@@ -2051,9 +2051,9 @@
             
             <tag> vector </tag>
             
-            <tag> style </tag>
-            
             <tag> animation </tag>
+            
+            <tag> style </tag>
             
             <tag> icon </tag>
             
