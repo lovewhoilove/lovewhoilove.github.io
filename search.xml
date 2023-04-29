@@ -405,9 +405,9 @@
       
         <tags>
             
-            <tag> openstreetmap </tag>
-            
             <tag> simple </tag>
+            
+            <tag> openstreetmap </tag>
             
         </tags>
       
@@ -1142,11 +1142,11 @@
       
         <tags>
             
-            <tag> datatiles </tag>
-            
             <tag> pmtiles </tag>
             
             <tag> elevation </tag>
+            
+            <tag> datatiles </tag>
             
         </tags>
       
@@ -2019,9 +2019,9 @@
             
             <tag> mapbox </tag>
             
-            <tag> tiles </tag>
-            
             <tag> studio </tag>
+            
+            <tag> tiles </tag>
             
         </tags>
       
@@ -2616,9 +2616,9 @@
       
         <tags>
             
-            <tag> maptiler </tag>
-            
             <tag> reprojection </tag>
+            
+            <tag> maptiler </tag>
             
             <tag> xyz </tag>
             
@@ -4936,9 +4936,9 @@
       
         <tags>
             
-            <tag> openstreetmap </tag>
-            
             <tag> simple </tag>
+            
+            <tag> openstreetmap </tag>
             
             <tag> attribution </tag>
             
@@ -4965,9 +4965,9 @@
       
         <tags>
             
-            <tag> layers </tag>
-            
             <tag> openstreetmap </tag>
+            
+            <tag> layers </tag>
             
             <tag> canvas </tag>
             
