@@ -175,10 +175,14 @@ body,
 .flink-list-item {
   width: calc(100% / 4 - 15px) !important;
 }
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1400px) {
   .flink-list-item {
-    width: calc(100% / 3 - 15px) !important;
+    width: calc(100% / 4 - 15px) !important;
   }
+}
+
+#article-container .flink .flink-list {
+  text-align: left!important;
 }
 
 /* 博客导航栏固定 -------------------------------------------*/
