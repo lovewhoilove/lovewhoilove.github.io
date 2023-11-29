@@ -1,0 +1,294 @@
+/* 文章页H1-H6图标样式效果,让小风车转起来 **************************************************/
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  -webkit-animation: ccc 1.6s linear infinite;
+  animation: ccc 1.6s linear infinite;
+}
+@-webkit-keyframes ccc {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-1turn);
+    transform: rotate(-1turn);
+  }
+}
+@keyframes ccc {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-1turn);
+    transform: rotate(-1turn);
+  }
+}
+/* 小风车颜色 */
+#content-inner.layout h1::before {
+  color: #ef50a8;
+  margin-left: -1.55rem;
+  font-size: 1.3rem;
+  margin-top: -0.23rem;
+}
+#content-inner.layout h2::before {
+  color: #fb7061;
+  margin-left: -1.35rem;
+  font-size: 1.1rem;
+  margin-top: -0.12rem;
+}
+#content-inner.layout h3::before {
+  color: #ffbf00;
+  margin-left: -1.22rem;
+  font-size: 0.95rem;
+  margin-top: -0.09rem;
+}
+#content-inner.layout h4::before {
+  color: #a9e000;
+  margin-left: -1.05rem;
+  font-size: 0.8rem;
+  margin-top: -0.09rem;
+}
+#content-inner.layout h5::before {
+  color: #57c850;
+  margin-left: -0.9rem;
+  font-size: 0.7rem;
+  margin-top: 0rem;
+}
+#content-inner.layout h6::before {
+  color: #5ec1e0;
+  margin-left: -0.9rem;
+  font-size: 0.66rem;
+  margin-top: 0rem;
+}
+/* 修改风车图标大小 */
+#content-inner.layout h1::before {
+  color: #ef50a8;
+  margin-left: -31px;
+  font-size: 26px;
+  margin-top: -5px;
+}
+#content-inner.layout h2::before {
+  color: #fb7061;
+  margin-left: -27px;
+  font-size: 22px;
+  margin-top: -3px;
+}
+#content-inner.layout h3::before {
+  color: #ffbf00;
+  margin-left: -25px;
+  font-size: 20px;
+  margin-top: -2px;
+}
+#content-inner.layout h4::before {
+  color: #a9e000;
+  font-size: 16px;
+  margin-top: -2px;
+}
+#content-inner.layout h5::before {
+  color: #57c850;
+  margin-left: -18px;
+  font-size: 14px;
+  margin-top: 0;
+}
+#content-inner.layout h6::before {
+  color: #5ec1e0;
+  margin-left: -18px;
+  font-size: 13px;
+  margin-top: 0;
+}
+/* 小风车 hover 效果 */
+#content-inner.layout h1:hover,
+#content-inner.layout h2:hover,
+#content-inner.layout h3:hover,
+#content-inner.layout h4:hover,
+#content-inner.layout h5:hover,
+#content-inner.layout h6:hover {
+  color: #49b1f5;
+}
+#content-inner.layout h1:hover::before,
+#content-inner.layout h2:hover::before,
+#content-inner.layout h3:hover::before,
+#content-inner.layout h4:hover::before,
+#content-inner.layout h5:hover::before,
+#content-inner.layout h6:hover::before {
+  color: #49b1f5;
+  -webkit-animation: ccc 3.2s linear infinite;
+  animation: ccc 3.2s linear infinite;
+}
+
+/* 滚动条 *************************************************************/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(73, 177, 245, 0.2);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #49b1f5;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #49b1f5;
+}
+
+/* 更换字体 ---------------------------------------------*/
+@font-face {
+  font-family: "tzy";
+  /* 字体名自定义即可 */
+  /* src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2'); */
+  src: url("https://npm.elemecdn.com/ethan4116-blog/lib/font/ZhuZiAWan.ttf");
+  /* 字体文件路径 */
+  font-display: swap;
+}
+
+body,
+.gitcalendar {
+  font-family: tzy !important;
+}
+
+/* 网址导航 ---------------------------------------------*/
+.flink-list-item {
+  width: calc(100% / 4 - 15px) !important;
+}
+@media screen and (max-width: 1400px) {
+  .flink-list-item {
+    width: calc(100% / 4 - 15px) !important;
+  }
+}
+
+/* 头像微调 */
+.flink-item-icon {
+  margin-right: 0 !important;
+  transition: .5s !important;
+}
+
+.flink-item-name,
+.flink-item-desc {
+  padding-left: 10px !important;
+}
+
+/* 去掉原来自带的before */
+#article-container .flink .flink-list>.flink-list-item::before {
+  content: none;
+}
+
+/* 鼠标经过改变背景 */
+#article-container .flink .flink-list>.flink-list-item:hover {
+  background-color: #61bcf2cc;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+}
+
+/* 鼠标经过改变文字颜色 */
+#article-container .flink .flink-list>.flink-list-item:hover a {
+  color: white !important;
+}
+
+/* 鼠标经过头像滚动 */
+#article-container .flink .flink-list>.flink-list-item:hover .flink-item-icon {
+  width: 60px;
+  margin-left: -70px;
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+/* 博客导航栏固定 -------------------------------------------*/
+.nav-fixed #nav {
+  transform: translateY(58px) !important;
+  -webkit-transform: translateY(58px) !important;
+  -moz-transform: translateY(58px) !important;
+  -ms-transform: translateY(58px) !important;
+  -o-transform: translateY(58px) !important;
+}
+#nav {
+  transition: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+/* aplayer最小化 --------------------------------------------*/
+.aplayer-narrow {
+  transform: translateX(-67px); /*66的宽度+1边框*/
+}
+
+.aplayer-body {
+  border-radius: 0 5px 5px 0 !important;
+  border: none;
+}
+
+.aplayer-miniswitcher {
+  background-color: rgba(73, 177, 245, 0.8) !important;
+  border-radius: 0 5px 5px 0 !important;
+  border: none;
+}
+
+.aplayer-miniswitcher svg path {
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+}
+
+/* 星空背景 --------------------------------------------------*/
+#universe {
+  display: block;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  #universe {
+    display: none;
+  }
+  /* 下面这个是切换手机背景的代码，有需要的可以使用，没需要的删了就行 */
+  /* #web_bg {
+      background-image: url("https://img.vm.laomishuo.com/image/2021/05/2021053107390019.jpeg");
+  } */
+}
+
+[data-theme="light"] #universe {
+  display: none;
+}
+
+/* 自定义加载动画 */
+.loading-img {
+  background: url(../img/avatar.png) no-repeat center center;
+  background-size: cover;
+}
