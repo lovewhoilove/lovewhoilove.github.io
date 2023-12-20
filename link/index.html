@@ -6,12 +6,12 @@
 <meta property="og:description" content="GIS 开发框架常用的地图开发框架                                                                                       Openlayers                Openlayers 参考文档">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lovewhoilove.gitee.io/img/avatar.png">
-<meta property="article:published_time" content="2023-12-14T01:17:52.307Z">
-<meta property="article:modified_time" content="2023-12-14T01:17:52.307Z">
+<meta property="article:published_time" content="2023-12-20T01:18:56.665Z">
+<meta property="article:modified_time" content="2023-12-20T01:18:56.665Z">
 <meta property="article:author" content="lovewhoilove">
 <meta property="article:tag" content="GIS,前端,Windows">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lovewhoilove.gitee.io/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lovewhoilove.gitee.io/link/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/img/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#49b1f5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/32.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://lovewhoilove.gitee.io/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lovewhoilove.gitee.io/link/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/img/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#49b1f5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/32.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -37,7 +37,7 @@
   },
   copyright: {"limitCount":50,"languages":{"author":"作者: lovewhoilove","link":"链接: ","source":"来源: lovewhoilove 的小站","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
   lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-right"},
+  Snackbar: undefined,
   source: {
     justifiedGallery: {
       js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-12-14 09:17:52'
+  postUpdate: '2023-12-20 09:18:56'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -159,7 +159,7 @@
 }
 window.addEventListener('load',()=> { preloader.endLoading() })
 
-if (false) {
+if (true) {
   document.addEventListener('pjax:send', () => { preloader.initLoading() })
   document.addEventListener('pjax:complete', () => { preloader.endLoading() })
 }</script><link rel="stylesheet" href="/css/custom.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/friend_404.gif" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">247</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">325</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-newspaper"></i><span> 文章相关</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-timeline"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Openlayers</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/doc/"><i class="fa-fw fas fa-book-reader"></i><span> 说明文档</span></a></li><li><a class="site-page child" href="/quick-start/"><i class="fa-fw fas fa-bolt"></i><span> 快速入门</span></a></li><li><a class="site-page child" href="/tutorials/"><i class="fa-fw fas fa-book"></i><span> 教程</span></a></li><li><a class="site-page child" href="/faq/"><i class="fa-fw fas fa-question"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/workshop/"><i class="fa-fw fas fa-graduation-cap"></i><span> 研讨会</span></a></li><li><a class="site-page child" href="/examples/"><i class="fa-fw fas fa-laptop-code"></i><span> 示例</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 网址导航</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('/img/homepage-banner.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lovewhoilove 的小站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-newspaper"></i><span> 文章相关</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-timeline"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Openlayers</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/doc/"><i class="fa-fw fas fa-book-reader"></i><span> 说明文档</span></a></li><li><a class="site-page child" href="/quick-start/"><i class="fa-fw fas fa-bolt"></i><span> 快速入门</span></a></li><li><a class="site-page child" href="/tutorials/"><i class="fa-fw fas fa-book"></i><span> 教程</span></a></li><li><a class="site-page child" href="/faq/"><i class="fa-fw fas fa-question"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/workshop/"><i class="fa-fw fas fa-graduation-cap"></i><span> 研讨会</span></a></li><li><a class="site-page child" href="/examples/"><i class="fa-fw fas fa-laptop-code"></i><span> 示例</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 网址导航</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">网址导航</h1></div></header><main class="layout hide-aside" id="content-inner"><div id="page"><div id="article-container"><div class="flink"><div class="flink"><div class="flink-name">GIS 开发框架</div><div class="flink-desc">常用的地图开发框架</div> <div class="flink-list">
@@ -269,6 +269,24 @@ if (false) {
               </div>
               <div class="flink-item-name">ol-ext</div> 
               <div class="flink-item-desc" title="基于Openlayers的第三方开源库">基于Openlayers的第三方开源库</div>
+            </a>
+          </div>
+          <div class="flink-list-item">
+            <a href="https://wandergis.com/coordtransform/" title="Coordtransform" target="_blank">
+              <div class="flink-item-icon">
+                <img class="no-lightbox" src= "/img/friend_404.gif" data-lazy-src="https://api.iowen.cn/favicon/github.com.png" onerror='this.onerror=null;this.src="/img/friend_404.gif"' alt="Coordtransform" />
+              </div>
+              <div class="flink-item-name">Coordtransform</div> 
+              <div class="flink-item-desc" title="百度、高德及火星坐标互转">百度、高德及火星坐标互转</div>
+            </a>
+          </div>
+          <div class="flink-list-item">
+            <a href="http://proj4js.org/" title="proj4js" target="_blank">
+              <div class="flink-item-icon">
+                <img class="no-lightbox" src= "/img/friend_404.gif" data-lazy-src="https://api.iowen.cn/favicon/github.com.png" onerror='this.onerror=null;this.src="/img/friend_404.gif"' alt="proj4js" />
+              </div>
+              <div class="flink-item-name">proj4js</div> 
+              <div class="flink-item-desc" title="坐标转换(包含基准转换)">坐标转换(包含基准转换)</div>
             </a>
           </div>
           <div class="flink-list-item">
@@ -1332,6 +1350,15 @@ if (false) {
               <div class="flink-item-name">Windows 时间线</div> 
               <div class="flink-item-desc" title="Windows系统版本发布">Windows系统版本发布</div>
             </a>
+          </div>
+          <div class="flink-list-item">
+            <a href="https://massgrave.dev/" title="Microsoft Activation Scripts" target="_blank">
+              <div class="flink-item-icon">
+                <img class="no-lightbox" src= "/img/friend_404.gif" data-lazy-src="https://api.iowen.cn/favicon/massgrave.dev.png" onerror='this.onerror=null;this.src="/img/friend_404.gif"' alt="Microsoft Activation Scripts" />
+              </div>
+              <div class="flink-item-name">Microsoft Activation Scripts</div> 
+              <div class="flink-item-desc" title="开源的Windows和Office激活器">开源的Windows和Office激活器</div>
+            </a>
           </div></div><div class="flink-name">启动盘</div><div class="flink-desc">制作启动盘/PE</div> <div class="flink-list">
           <div class="flink-list-item">
             <a href="https://www.ventoy.net/cn/index.html" title="Ventoy" target="_blank">
@@ -1728,7 +1755,7 @@ if (false) {
               <div class="flink-item-name">香哈菜谱</div> 
               <div class="flink-item-desc" title="美食菜谱">美食菜谱</div>
             </a>
-          </div></div></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/homepage-banner.webp')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 <i style="color:red" class="fa fa-heartbeat fa-beat"></i> By lovewhoilove</div><div class="footer_custom_text">生活原本沉闷，但跑起来就有风🎈</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+          </div></div></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/homepage-banner.webp')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 <i style="color:red" class="fa fa-heartbeat fa-beat"></i> By lovewhoilove</div><div class="footer_custom_text">生活原本沉闷，但跑起来就有风🎈</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
@@ -1795,11 +1822,78 @@ if ('Valine' === 'Valine' || !true) {
   function loadOtherComment () {
     loadValine()
   }
-}</script></div><script src="/js/sun_moon.js"></script><script src="/js/jquery.min.js"></script><script data-pjax defer src="/js/chocolate.js"></script><script defer type="text/javascript" src="/js/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script data-pjax defer src="/js/fishes.js"></script><canvas id="universe"></canvas><script src="/js/universe.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+}</script></div><script src="/js/sun_moon.js"></script><script src="/js/jquery.min.js"></script><script data-pjax defer src="/js/chocolate.js"></script><script defer type="text/javascript" src="/js/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script data-pjax defer src="/js/fishes.js"></script><canvas id="universe"></canvas><script src="/js/universe.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
 for(var i = 0;i<arr.length;i++){
     arr[i].classList.add('wow');
     arr[i].classList.add('animate__zoomIn');
