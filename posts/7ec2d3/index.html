@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Introducing 3D Tiles【译】 | 轻扰时光的小站</title><meta name="author" content="轻扰时光"><meta name="copyright" content="轻扰时光"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Patrick Cozzi的一篇博客，他在2015年宣布了 3D Tiles。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introducing 3D Tiles【译】">
+<meta property="og:url" content="https://lovewhoilove.github.io/posts/7ec2d3/">
+<meta property="og:site_name" content="轻扰时光的小站">
+<meta property="og:description" content="Patrick Cozzi的一篇博客，他在2015年宣布了 3D Tiles。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262047030.jpg?imageMogr2/quality/75/format/webp/interlace/0">
+<meta property="article:published_time" content="2025-02-26T13:27:06.000Z">
+<meta property="article:modified_time" content="2025-02-26T15:58:56.620Z">
+<meta property="article:author" content="轻扰时光">
+<meta property="article:tag" content="3D Tiles">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262047030.jpg?imageMogr2/quality/75/format/webp/interlace/0"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lovewhoilove.github.io/posts/7ec2d3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/img/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#49b1f5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/32.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: false,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Introducing 3D Tiles【译】',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-26 23:58:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/progress_bar.css"><link rel="stylesheet" href="/css/custom.css"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><link rel="stylesheet" href="/css/custom.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">279</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">360</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-newspaper"></i><span> 文章相关</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-timeline"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Openlayers</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/doc/"><i class="fa-fw fas fa-book-reader"></i><span> 说明文档</span></a></li><li><a class="site-page child" href="/quick-start/"><i class="fa-fw fas fa-bolt"></i><span> 快速入门</span></a></li><li><a class="site-page child" href="/tutorials/"><i class="fa-fw fas fa-book"></i><span> 教程</span></a></li><li><a class="site-page child" href="/faq/"><i class="fa-fw fas fa-question"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/workshop/"><i class="fa-fw fas fa-graduation-cap"></i><span> 研讨会</span></a></li><li><a class="site-page child" href="/examples/"><i class="fa-fw fas fa-laptop-code"></i><span> 示例</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-solid fa-earth-americas"></i><span> CesiumJS</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/cesium/"><i class="fa-fw fas fa-laptop-code"></i><span> 示例</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 网址导航</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262047030.jpg?imageMogr2/quality/75/format/webp/interlace/0')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">轻扰时光的小站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-newspaper"></i><span> 文章相关</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-timeline"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-layer-group"></i><span> Openlayers</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/doc/"><i class="fa-fw fas fa-book-reader"></i><span> 说明文档</span></a></li><li><a class="site-page child" href="/quick-start/"><i class="fa-fw fas fa-bolt"></i><span> 快速入门</span></a></li><li><a class="site-page child" href="/tutorials/"><i class="fa-fw fas fa-book"></i><span> 教程</span></a></li><li><a class="site-page child" href="/faq/"><i class="fa-fw fas fa-question"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/workshop/"><i class="fa-fw fas fa-graduation-cap"></i><span> 研讨会</span></a></li><li><a class="site-page child" href="/examples/"><i class="fa-fw fas fa-laptop-code"></i><span> 示例</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-solid fa-earth-americas"></i><span> CesiumJS</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/cesium/"><i class="fa-fw fas fa-laptop-code"></i><span> 示例</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 网址导航</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Introducing 3D Tiles【译】</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-26T13:27:06.000Z" title="发表于 2025-02-26 21:27:06">2025-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-26T15:58:56.620Z" title="更新于 2025-02-26 23:58:56">2025-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Cesium/">Cesium</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Introducing 3D Tiles【译】"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><img class="nolazyload" id="post-top-bg" src="background-image: url('https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262047030.jpg?imageMogr2/quality/75/format/webp/interlace/0')"></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><details class="toggle" style="border: 1px solid black"><summary class="toggle-button" style="background-color: black;color: #fff">原文链接及内容</summary><div class="toggle-content"><p>原文链接：<a target="_blank" rel="noopener" href="https://cesium.com/blog/2015/08/10/introducing-3d-tiles/">https://cesium.com/blog/2015/08/10/introducing-3d-tiles/</a></p>
+<iframe src="https://cesium.com/blog/2015/08/10/introducing-3d-tiles/" width="100%" height="400px" frameborder="0" loading="lazy" allowfullscreen></iframe></div></details>
+
+<p>Cesium 是一个用于可视化地球的 3D 平台，涵盖从太空中的每一颗卫星，到曼哈顿的每一栋建筑，再到火星上的每一个陨石坑。为了实现连接全球地理空间数据的“<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Digital_Earth">数字地球</a>”愿景，我们很高兴推出自 Cesium 本身以来最大的举措：3D Tiles。</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262143793.jpg?imageMogr2/quality/75/format/webp/interlace/0"></p>
+<p>3D Tiles 是一个用于流式传输大规模异构 3D 地理空间数据的<a target="_blank" rel="noopener" href="https://github.com/CesiumGS/3d-tiles">开放规范</a>。为了扩展 Cesium 的地形和影像流式传输功能，3D Tiles 将被用于传输 3D 内容，包括建筑物、树木、点云和矢量数据。</p>
+<p>3D Tiles 已经在 Cesium 中取得进展；例如，参见：</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262151576.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="超过 110 万座纽约市的 OpenStreetMap 建筑"></p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262152127.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="法国 Chappes 的 St Marie 教堂的点云"></p>
+<p>3D Tiles 将图形研究、电影行业和游戏行业的技术引入 3D 地理空间领域，定义了一种空间数据结构和一系列专为 3D 设计的瓦片格式，优化了流式传输和渲染。用于 3D 模型的瓦片采用了 <a target="_blank" rel="noopener" href="https://www.khronos.org/gltf/">glTF</a> 格式，这是由 Khronos 开发的 WebGL 运行时资产格式，Cesium 团队对此做出了重大贡献。</p>
+<blockquote>
+<p>glTF™ 是一种免版税的规范，用于引擎和应用程序高效传输和加载 3D 场景及模型。glTF 能够最小化 3D 资产的大小，并减少解包和使用这些资产所需的运行时处理。glTF 定义了一种可扩展的发布格式，通过促进行业内 3D 内容的互操作使用，简化了创作工作流程。</p>
+</blockquote>
+<p><img src= "/img/friend_404.gif" data-lazy-src="/"></p>
+<img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262206093.jpg?imageMogr2/quality/75/format/webp/interlace/0?width=400" width="500"/>
+
+<p>加载 Cesium 中的 3D Tiles将像这样简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> viewer = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Viewer</span>(<span class="string">&#x27;cesiumContainer&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> tileset = viewer.<span class="property">scene</span>.<span class="property">primitives</span>.<span class="title function_">add</span>(<span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Cesium3DTileset</span>(&#123;</span><br><span class="line">  url : <span class="string">&#x27;/path/to/3d/tileset&#x27;</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<p>3D Tiles有如下特点：</p>
+<ul>
+<li>开放的</li>
+<li>为流式传输和渲染优化的</li>
+<li>为 3D 设计的</li>
+<li>交互式的</li>
+<li>可定制样式的</li>
+<li>适应性强的</li>
+<li>灵活的</li>
+<li>异构的</li>
+<li>精确的</li>
+<li>时间动态的</li>
+</ul>
+<h2 id="开放的"><a href="#开放的" class="headerlink" title="开放的"></a>开放的</h2><p>3D Tiles 是一个<a target="_blank" rel="noopener" href="https://github.com/CesiumGS/3d-tiles">开放规范</a>，并在 Cesium 中提供了开源实现。我们期待其他 3D 引擎和转换工具也能使用 3D Tiles。</p>
+<p>此外，我们通过发布相关技术文章（如 Cesium 中的<a target="_blank" rel="noopener" href="https://cesium.com/blog/2015/06/24/oriented-bounding-boxes">边界体优化</a>和<a target="_blank" rel="noopener" href="https://cesium.com/blog/2015/08/04/fast-hierarchical-culling">平面遮罩</a>技术）来推动该领域的发展。</p>
+<p>规范和实现的开发都在进行中，我们鼓励在<a target="_blank" rel="noopener" href="http://community.cesium.com/">Cesium 论坛</a>上进行公开讨论。我们预计它们将在 2016 年春季稳定下来。</p>
+<h2 id="针对流式传输和渲染进行了优化"><a href="#针对流式传输和渲染进行了优化" class="headerlink" title="针对流式传输和渲染进行了优化"></a>针对流式传输和渲染进行了优化</h2><p>3D Tiles 的主要目的是提高海量异构数据集的流式传输和渲染性能。3D Tiles 的基础是一种空间数据结构，它支持分层细节级别 (HLOD)，因此只有可见的瓦片(tiles)才会被流式传输 - 并且只有那些对于给定的 3D 视图最重要的瓦片(tiles)才会被流式传输。瓦片(tiles)有效载荷可以是二进制和上下文感知压缩，例如，使用 <a target="_blank" rel="noopener" href="https://github.com/KhronosGroup/glTF/issues/398">Open3DGC</a> 或<a target="_blank" rel="noopener" href="http://jcgt.org/published/0003/02/01/">oct-encoding</a>。</p>
+<p>3D Tiles 的设计团队从一开始就使用 WebGL，而在此之前，他们已经使用 OpenGL 多年。因此，与 glTF 一样，从接收 3D Tile 到使用 WebGL 渲染它的流程经过了简化，变得快速而简单，并最大限度地减少了客户端处理。为了减少 WebGL 绘制调用的数量，可以对 Tile 进行预批处理或动态批处理。</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262231677.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="剑桥的 3D 建筑"></p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262233866.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="稀疏网格布局中瓦片的边界体积,每个瓦片对应一次 WebGL 绘制调用"></p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262235003.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="哈佛校园的放大视图"></p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262236659.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="缩小的调试视图显示，只需要在上面的哈佛园视图中呈现剑桥数据集的子集。"></p>
+<h2 id="适用于-3D"><a href="#适用于-3D" class="headerlink" title="适用于 3D"></a>适用于 3D</h2><p>从一开始，3D Tiles 就为真正的 3D 设计，支持自由漫游的摄像头；它们不仅限于 2.5D 视角等场景。</p>
+<p>3D Tiles 不依赖于缩放级别等二维结构，而是基于几何误差进行细节层次（LOD）选择和可调节的像素误差。这使得性能&#x2F;视觉质量得以调整，并能在同一视图中构建多个“缩放级别”。</p>
+<p>在 3D Tiles 中，边界体积是三维的，而非二维的制图范围。在二维情况下，瓦片方案通常基于 Web Mercator 投影。Web Mercator 对于三维应用并不理想，因为两极会投影至无限远，并且 NGA <a target="_blank" rel="noopener" href="http://earth-info.nga.mil/GandG/wgs84/web_mercator/">不建议将 Web Mercator</a> 用于国防部（DoD）应用。相比之下，在 3D Tiles 中，瓦片方案在三个维度上都是可适应的，这取决于数据集中的模型及其分布。</p>
+<blockquote>
+<p>NGA，即National Geospatial-Intelligence Agency，美国国家地理空间情报局。<br>DOD，United States Department of Defense，美国国防部。</p>
+</blockquote>
+<p>传统的地理空间要素，如多边形和多段线，可以被拉伸或绘制在地表之上。但 3D Tiles 超越了点、多段线和多边形，能够处理包含网格、材质和节点层次结构的完整 3D 模型。</p>
+<h2 id="交互式的"><a href="#交互式的" class="headerlink" title="交互式的"></a>交互式的</h2><p>3D Tiles 支持交互式选择和样式设置。即使通过批处理等 WebGL 优化，3D Tiles 仍允许对单个模型进行交互，例如鼠标悬停时高亮显示或移除 3D 建筑物。瓦片可以包含每个模型的元数据，以实现更多交互功能，例如使用建筑物 ID 查询第三方Web服务。</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium%2FPixPin_2025-02-26_22-50-36.gif" alt="鼠标悬停高亮显示 3D Tile交互"></p>
+<h2 id="可定制样式的"><a href="#可定制样式的" class="headerlink" title="可定制样式的"></a>可定制样式的</h2><p>各个模型的元数据（例如建筑物高度或建造年份）可用于运行时着色，无需编写代码。样式可以即时更改。</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262253467.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="依据建筑物高度为其配色，用以展示3D 瓦片可以自定义样式"></p>
+<h2 id="适应性强"><a href="#适应性强" class="headerlink" title="适应性强"></a>适应性强</h2><p>例如，TMS 中使用的传统四叉树细分对于地图图块和 2D 来说已经足够，但对于 3D 和非均匀数据集分布来说并不是最优的。</p>
+<p>3D Tiles 支持 3D 中的自适应空间细分，包括 kd 树、四叉树、八叉树、网格和其他空间数据结构。转换工具可以自适应地细分数据集，例如，根据渲染每个模型的成本和模型的分布，从而产生平衡的数据结构，而不是严格的空间细分。像 Cesium 这样的运行时引擎是通用的，可以与所有细分技术配合使用。</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262303760.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="基于剑桥建筑物分布的自适应quadtree-like(类四叉树)细分方法"></p>
+<h2 id="灵活的"><a href="#灵活的" class="headerlink" title="灵活的"></a>灵活的</h2><p>在传统的 2D 地图瓦片中，当用户放大时，可见的地图瓦片会被替换为新的更高分辨率的瓦片。这种过程称为细化。从某种意义上说，这是对同一内容的子集进行了再次下载，只是分辨率更高。我们把这种替换称为细化，它对于影像瓦片甚至 3D 地形来说都是一种合理的解决方案。</p>
+<p>然而，对于其他 3D 数据集（如建筑物和点云），需要更大的灵活性。例如，与其在用户放大时反复下载同一个建筑物的不同分辨率版本，3D Tiles 更倾向于仅流式传输新的建筑物数据。我们称之为增量细化。增量细化的额外优势在于，子瓦片可以在下载时立即渲染，而替换精化则要求先下载完所有父瓦片的子瓦片。3D Tiles既支持替换细化也支持增量细化。</p>
+<blockquote>
+<p>Additive refinement：这里翻译为增量细化。replacement refinement：这里翻译为替换细化。</p>
+</blockquote>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262320124.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="迈阿密的建筑的根瓦片包含最“重要”的建筑"></p>
+<p>随着视图的进一步放大，包含下一级重要建筑的子瓦片会通过增量细化流式传输进来。此处展示了根瓦片及其最接近的子瓦片。</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262323050.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="随着视图的进一步放大，加载了子级瓦片（蓝色）。请注意，在远处没有加载子级瓦片。"></p>
+<h2 id="异质"><a href="#异质" class="headerlink" title="异质"></a>异质</h2><p>3D Tiles 是异构的，因为没有一种适用于所有 3D 数据集的统一格式。批量模型（Batched models，例如建筑物）需要一种不同于实例模型（ instanced models，例如树木）的表示方式，而实例模型又需要一种不同于点云（point clouds）的表示方式，等等。</p>
+<p>3D Tiles 通过自适应细分、灵活细化和可扩展的瓦片格式集来支持异构数据集。</p>
+<p>3D Tiles的异质性质允许结合 HLOD 实现不同细节级别，例如，一个 3D 建筑在某一细节级别可能是一个广告牌和标签，在更高细节级别可能是一个拉伸的足迹，在下一个细节级别可能是一个 3D 模型，在最高细节级别可能是一个纹理化的 3D 模型。</p>
+<blockquote>
+<p>HLOD：Hierarchical Level of Detail，即分层的细节层次。<br>LOD:Level of Detail，即细节层次。细节层次（Level of detail）随着物体或者模型远离观察者而逐步降低。</p>
+</blockquote>
+<h2 id="精确的"><a href="#精确的" class="headerlink" title="精确的"></a>精确的</h2><p>Given Cesium’s roots in rocket science (literally), 3D Tiles provide full-precision geometry to avoid jittering artifacts without the cost of storing double-precision values.</p>
+<p>鉴于 Cesium 的火箭科学背景（<a target="_blank" rel="noopener" href="http://apps.agi.com/SatelliteViewer/?Status=Operational">字面意义上</a>），3D Tiles 提供了全精度几何体，以避免<a target="_blank" rel="noopener" href="http://help.agi.com/AGIComponents/html/BlogPrecisionsPrecisions.htm">抖动伪影</a>，而无需承担存储双精度值的成本。</p>
+<h2 id="时间动态的"><a href="#时间动态的" class="headerlink" title="时间动态的"></a>时间动态的</h2><p>Cesium 专为时间动态可视化设计，如卫星和无人机的展示。下一步是将其扩展至 3D Tiles，以便用户能够随时间查看地形或积雪覆盖的变化，配合大规模时间动态地形和点云数据。</p>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>更多的示例，请参阅我们使用 CyberCity 3D 的 3D 建筑制作的演示：</p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262354559.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="剑桥"></p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262354274.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="华盛顿特区"></p>
+<p><img src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262355487.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="位于英国伦敦道格斯岛北部金丝雀码头"></p>
+<p>关于具体细节，请查看 <a target="_blank" rel="noopener" href="https://github.com/CesiumGS/3d-tiles">3D Tiles 规范</a>，并准备好使用 3D Tiles 和 Cesium 构建令人惊叹的应用程序。</p>
+<p>此外，AGI 的 Cesium 团队正在所有领域招聘，包括 3D Tiles。<a target="_blank" rel="noopener" href="https://www.linkedin.com/in/patrickcozzi">联系我</a>了解与我们合作的相关信息。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lovewhoilove.github.io">轻扰时光</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lovewhoilove.github.io/posts/7ec2d3/">https://lovewhoilove.github.io/posts/7ec2d3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lovewhoilove.github.io" target="_blank">轻扰时光的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/3D-Tiles/">3D Tiles</a></div><div class="post_share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_wechat"></a><a class="a2a_button_sina_weibo"></a><a class="a2a_button_qzone"></a><a class="a2a_button_douban"></a><a class="a2a_button_print"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "/img/friend_404.gif" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "/img/friend_404.gif" data-lazy-src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/posts/f262afee/" title="The open specification for 3D data【译】"><img class="cover" src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262047030.jpg?imageMogr2/quality/75/format/webp/interlace/0" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">The open specification for 3D data【译】</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/daf15e37/" title="3D Tiles 1.1 S2 Globe【译】"><img class="cover" src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502221701487.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-14</div><div class="title">3D Tiles 1.1 S2 Globe【译】</div></div></a></div><div><a href="/posts/2bbf5c62/" title="3D Tiles Adjust Height【译】"><img class="cover" src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502221704619.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-18</div><div class="title">3D Tiles Adjust Height【译】</div></div></a></div><div><a href="/posts/433a9332/" title="3D Tiles BIM【译】"><img class="cover" src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502221707527.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-18</div><div class="title">3D Tiles BIM【译】</div></div></a></div><div><a href="/posts/5b76a3fa/" title="3D Tiles Clipping Planes【译】"><img class="cover" src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502222311468.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-22</div><div class="title">3D Tiles Clipping Planes【译】</div></div></a></div><div><a href="/posts/2c1b4fdb/" title="3D Tiles Compare【译】"><img class="cover" src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502242107400.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-24</div><div class="title">3D Tiles Compare【译】</div></div></a></div><div><a href="/posts/e19d510d/" title="3D Tiles Feature Picking【译】"><img class="cover" src= "/img/friend_404.gif" data-lazy-src="https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502221733687.jpg?imageMogr2/quality/75/format/webp/interlace/0" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-13</div><div class="title">3D Tiles Feature Picking【译】</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">开放的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%B5%81%E5%BC%8F%E4%BC%A0%E8%BE%93%E5%92%8C%E6%B8%B2%E6%9F%93%E8%BF%9B%E8%A1%8C%E4%BA%86%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">针对流式传输和渲染进行了优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E4%BA%8E-3D"><span class="toc-number">3.</span> <span class="toc-text">适用于 3D</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%9A%84"><span class="toc-number">4.</span> <span class="toc-text">交互式的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%AE%9A%E5%88%B6%E6%A0%B7%E5%BC%8F%E7%9A%84"><span class="toc-number">5.</span> <span class="toc-text">可定制样式的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E5%BA%94%E6%80%A7%E5%BC%BA"><span class="toc-number">6.</span> <span class="toc-text">适应性强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%81%B5%E6%B4%BB%E7%9A%84"><span class="toc-number">7.</span> <span class="toc-text">灵活的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E8%B4%A8"><span class="toc-number">8.</span> <span class="toc-text">异质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%BE%E7%A1%AE%E7%9A%84"><span class="toc-number">9.</span> <span class="toc-text">精确的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%8A%A8%E6%80%81%E7%9A%84"><span class="toc-number">10.</span> <span class="toc-text">时间动态的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-number">11.</span> <span class="toc-text">下一步</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://u-1303826255.cos.ap-nanjing.myqcloud.com/cesium/202502262047030.jpg?imageMogr2/quality/75/format/webp/interlace/0')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025 <i style="color:red" class="fa fa-heartbeat fa-beat"></i> By 轻扰时光</div><div class="footer_custom_text">生活原本沉闷，但跑起来就有风🎈</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 's2D3RXeuiTBrJjXpdIo4bJuK-gzGzoHsz',
+      appKey: 'e6j6L6lA50bj18TlkcZEMw0O',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, {"placeholder":"畅所欲言哈😁~~"}))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="/js/sun_moon.js"></script><script src="/js/jquery.min.js"></script><script data-pjax defer src="/js/chocolate.js"></script><script defer type="text/javascript" src="/js/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script data-pjax defer src="/js/fishes.js"></script><canvas id="universe"></canvas><script src="/js/universe.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '1s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
